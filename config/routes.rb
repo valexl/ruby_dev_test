@@ -10,7 +10,9 @@ Rails.application.routes.draw do
         post :rebuild #for the_sortable_tree
       end
     end
+
   end
+
   
 
   # The priority is based upon order of creation: first created -> highest priority.

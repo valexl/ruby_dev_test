@@ -3,4 +3,10 @@ module Admin::BaseHelper
     sortable_tree @categories, :new_url => new_admin_category_path
   end
 
+  def get_available_tags_for_post(post)
+    available_tags  = ActsAsTaggableOn::Tag.all.collect {|t| [ t.name]}
+    available_tags += post.tag_list.collect {|t| [t]}
+    available_tags.uniq!
+  end
+
 end

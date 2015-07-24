@@ -56,6 +56,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.5.0)
+      activerecord (>= 3.2, < 5)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.2)
@@ -259,6 +261,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    selectize-rails (0.12.1)
     shellany (0.0.1)
     slim (3.0.3)
       temple (~> 0.7.3)
@@ -306,6 +309,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (~> 1.0.0.pre1)
+  acts-as-taggable-on (~> 3.4)
   awesome_nested_set
   byebug
   coffee-rails (~> 4.1.0)
@@ -324,6 +328,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  selectize-rails
   slim
   slim-rails
   spork!

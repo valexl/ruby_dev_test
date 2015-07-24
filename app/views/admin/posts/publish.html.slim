@@ -1,0 +1,31 @@
+= form_for @post_form, url: set_publish_admin_post_path, method: :put do |f|
+  - if @post_form.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@post_form.errors.count, "error")} prohibited this post from being saved:"
+      ul
+        - @post_form.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :category_id
+    br
+    = f.select :category_id, options_for_select(Category.all.collect {|u| [ u.title, u.id ] }, @post_form.category_id),  { include_blank: true } 
+  .field
+    = f.label :tag_list
+    br
+    = f.select :tag_list, options_for_select(get_available_tags_for_post(@post), @post.tag_list), {}, multiple: true, id: 'tag_list'
+
+  .actions 
+    = f.submit
+
+javascript:
+  $('#tag_list').selectize({
+    delimiter: ',',
+    create: function(input) {
+        return {
+            value: input,
+            text: input
+        }
+    }
+  });
+

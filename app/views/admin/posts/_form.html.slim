@@ -1,0 +1,39 @@
+= form_for [:admin, @post] do |f|
+  - if @post.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+      ul
+        - @post.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    br
+    = f.text_field :title
+  .field
+    = f.label :category_id
+    br
+    = f.select :category_id, options_for_select(Category.all.collect {|u| [ u.title, u.id ] }, @post.category_id),  { include_blank: true } 
+  .field
+    = f.label :content
+    br
+    = f.text_area :content
+
+  .field
+    = f.label :tag_list
+    br
+    = f.select :tag_list, options_for_select(get_available_tags_for_post(@post), @post.tag_list), {}, multiple: true, id: 'tag_list'
+
+  .actions = f.submit
+
+javascript:
+  $('#tag_list').selectize({
+    delimiter: ',',
+    create: function(input) {
+        return {
+            value: input,
+            text: input
+        }
+    }
+  });
+

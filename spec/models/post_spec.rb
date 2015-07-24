@@ -32,7 +32,21 @@ RSpec.describe Post, type: :model do
       @post.published = true
       @post.category = nil
     end
+  end
 
+  describe 'has method' do
+    it 'publish! which set publish to true' do
+      @post.published = false
+      @post.save!
+      @post.publish!
+      expect(@post.published?).to eq(true)
+    end
+    it 'publish! which set publish to true' do
+      @post.published = false
+      @post.save!
+      @post.publish!
+      expect(@post.published?).to eq(true)
+    end
   end
 
 end

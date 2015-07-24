@@ -46,6 +46,10 @@ gem "the_sortable_tree", "~> 2.5.0"
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'devise'
 
+# For tagging
+gem 'acts-as-taggable-on', '~> 3.4'
+gem "selectize-rails"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
