@@ -1,0 +1,13 @@
+.row
+  .col-xs-12.col-sm-8.col-sm-offset-2
+    .jumbotron
+      h1 
+        = @post.title
+      p
+        = @post.content
+    
+      - if @post.tag_list.length > 0
+        #tag_cloud.alert.alert-info
+          h4
+            'Tag cloud
+          = @post.tag_list

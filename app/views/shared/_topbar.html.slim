@@ -11,3 +11,16 @@
       li class="active"
         = link_to 'Posts', posts_path
 
+  ul.nav.navbar-nav.navbar-right
+    - if user_signed_in?
+      li role="presentation"
+        li
+          a href='#'
+            = current_user.email
+        li
+          = link_to 'Logoff', destroy_user_session_path, method: :delete, data: {confirm: 'Are you sure?'}
+
+    - else
+      li role="presentation"
+        li
+          = link_to 'Sign In', new_user_session_path

@@ -3,4 +3,5 @@
 FactoryGirl.define do
   sequence(:random_title)   { "#{Forgery('name').company_name}" }
   sequence(:random_content) { Forgery('lorem_ipsum').paragraphs }
+  sequence(:random_email)   { Forgery('email').address   }
 end
