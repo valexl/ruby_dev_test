@@ -3,6 +3,7 @@ FactoryGirl.define do
     title    { generate :random_title }
     content  { generate :random_content }
     association :category, factory: :category    
+    published true
   end
 
 end

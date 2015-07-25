@@ -8,7 +8,7 @@ class PostsDatatable
   def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
-      iTotalRecords: Post.count,
+      iTotalRecords: Post.published.count,
       iTotalDisplayRecords: total_count,
       aaData: get_data
     }

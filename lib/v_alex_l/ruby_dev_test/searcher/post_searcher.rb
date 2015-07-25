@@ -41,11 +41,17 @@ class VAlexL::RubyDevTest::Searcher::PostSearcher
       end
 
       def get_filter_block(tag_list)
-        return {} if tag_list.blank?
-        and_block = tag_list.inject([]) do |res, tag|
-          res.push({ term: {tag_list: tag}})
+        filter = {:and => [{
+                            term: {published: true}
+                            }]
+                  }
+        if tag_list.present?
+          tag_filter = tag_list.inject([]) do |res, tag|
+            res.push({ term: {tag_list: tag}})
+          end
+          filter[:and] += tag_filter
         end
-        {:and => and_block}
+        filter
       end
 
   end

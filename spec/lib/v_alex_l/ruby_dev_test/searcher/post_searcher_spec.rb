@@ -12,7 +12,9 @@ describe VAlexL::RubyDevTest::Searcher::PostSearcher do
 
     @simple_category = FactoryGirl.create(:category, title: 'Simple category')
 
-    @post  = FactoryGirl.create(:post, title: 'Miracle', category: @simple_category, tag_list: 'First, Second')
+    @post              = FactoryGirl.create(:post, title: 'Miracle', category: @simple_category, tag_list: 'First, Second')
+    @unpublished_post  = FactoryGirl.create(:post, published: false)
+
     @first_tag = @post.tags.first
     @second_tag = @post.tags.last
 
@@ -50,7 +52,7 @@ describe VAlexL::RubyDevTest::Searcher::PostSearcher do
     it 'will find all posts if give blank string' do
       @searcher = VAlexL::RubyDevTest::Searcher::PostSearcher.new({q: ''})
       results = @searcher.get_records
-      expect(results.total).to eq(Post.count)
+      expect(results.total).to eq(Post.published.count) #except unpublished
     end
 
     it 'will find all posts which are marked First tag' do
@@ -66,6 +68,12 @@ describe VAlexL::RubyDevTest::Searcher::PostSearcher do
       results = @searcher.get_records
       expect(results.total).to eq(1)
       expect(results.any?{|r| r.eql?(@post)}).to eq(true)
+    end
+
+    it 'will not find unpublished post' do
+      @searcher = VAlexL::RubyDevTest::Searcher::PostSearcher.new({q: ''})
+      results = @searcher.get_records
+      expect(results.any?{|r| r.eql?(@unpublished_post)}).to eq(false)
     end
 
     context 'which will not return @post if' do
