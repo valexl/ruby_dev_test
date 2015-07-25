@@ -5,8 +5,9 @@ module Admin::BaseHelper
 
   def get_available_tags_for_post(post)
     available_tags  = ActsAsTaggableOn::Tag.all.collect {|t| [ t.name]}
-    available_tags += post.tag_list.collect {|t| [t]}
+    available_tags += post.tag_list.collect {|t| [t]} if post.tag_list.present?
     available_tags.uniq!
+    available_tags
   end
 
 end

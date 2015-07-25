@@ -1,5 +1,0 @@
-p
-  = link_to 'Create New Category', new_category_path
-
-ol.sortable_tree data={ rebuild_url: rebuild_categories_url, cookie_store: :true, cookie_scope: @categories.first.class }
-  = sortable_tree @categories, :new_url => new_category_path

@@ -46,9 +46,6 @@ ActiveAdmin.register Post do
 
   form partial: 'form'
 
-  # show do
-  #   render 'post_info'
-  # end
   show do
     attributes_table do
       row :title

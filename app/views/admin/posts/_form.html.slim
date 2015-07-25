@@ -22,7 +22,7 @@
   .field
     = f.label :tag_list
     br
-    = f.select :tag_list, options_for_select(get_available_tags_for_post(@post), @post.tag_list), {}, multiple: true, id: 'tag_list'
+    = f.select :tag_list, options_for_select(get_available_tags_for_post(@post), @post.tag_list.to_a), {}, multiple: true, id: 'tag_list'
 
   .actions = f.submit
 

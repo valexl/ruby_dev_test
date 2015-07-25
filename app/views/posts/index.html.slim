@@ -1,0 +1,20 @@
+#index_posts
+  hr
+  .row
+    .col-sm-12.col-md-6
+      #tag_cloud.alert.alert-info
+        h4
+          'Tag cloud
+        - tag_cloud(available_tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+          = link_to tag.name, '#', :class => css_class, 'data-name' => tag.name
+          |  
+
+  table.table.table-bordered#posts data-source="#{posts_url}"
+    thead
+      tr
+        th #
+        th Title
+        th Category
+        th Content
+        th Tag list
+        th Created at

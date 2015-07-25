@@ -1,0 +1,13 @@
+.navbar-header
+  button.navbar-toggle.collapsed data-target=".navbar-collapse" data-toggle="collapse" type="button" 
+    span.sr-only Toggle navigation
+    span.icon-bar
+    span.icon-bar
+    span.icon-bar
+  = link_to 'RubyDevTest', root_path, class: 'navbar-brand'
+.collapse.navbar-collapse
+  ul.nav.navbar-nav
+    li role="presentation" class="active"
+      li class="active"
+        = link_to 'Posts', posts_path
+

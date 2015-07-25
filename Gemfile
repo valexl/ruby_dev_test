@@ -38,6 +38,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim'
 gem 'slim-rails'
 
+# JS Helper library
+gem 'underscore-rails'
+
+#For bootstrap
+gem 'bootstrap-sass', '~> 3.2.0'
+
 # For orginize tree structure
 gem 'awesome_nested_set'
 gem "the_sortable_tree", "~> 2.5.0"
@@ -49,6 +55,13 @@ gem 'devise'
 # For tagging
 gem 'acts-as-taggable-on', '~> 3.4'
 gem "selectize-rails"
+
+#For searching on server_side
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+#For searching on client side
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

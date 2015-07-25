@@ -14,6 +14,18 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
-
+//= require dataTables/jquery.dataTables
+//= require datatable-highlight.jquery
+//= require bootstrap-sprockets
+//= require bootstrap-datatable
+//= require underscore
 //= require turbolinks
-//= require_tree .
+//= require posts
+
+
+$(document).ready(function(){
+  new Posts($("#index_posts"));
+})
+  
+
+
