@@ -6,10 +6,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   after_create :try_make_admin!
+  after_create :notice_user_about_creating_by_email!
+
 
   private
     def try_make_admin!
       self.admin = true and save if User.count == 1 #only just created user (current_user)
+      true
+    end
+
+    def notice_user_about_creating_by_email!
+      Delayed::Job.enqueue Workers::NoticeUserAboutCreating.new(self.id)
       true
     end
 

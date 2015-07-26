@@ -52,6 +52,8 @@ gem "the_sortable_tree", "~> 2.5.0"
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'devise'
 
+
+
 # For tagging
 gem 'acts-as-taggable-on', '~> 3.4'
 gem "selectize-rails"
@@ -62,6 +64,9 @@ gem 'elasticsearch-rails'
 #For searching on client side
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
+#For delayed job
+gem 'delayed_job_active_record'
+gem 'daemons'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
