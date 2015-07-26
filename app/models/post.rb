@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   acts_as_taggable
   
   belongs_to :category
-  has_many   :comments
+  has_many   :comments, -> {accepting}
 
   validates :title, presence: true
   validates :category, presence: true, :if => :published?

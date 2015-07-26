@@ -1,0 +1,6 @@
+$("form #comment_content").val("");
+$("form #comment_captcha").val("");
+$("form .alert.alert-info").removeClass('hide').html("Comment was successful created. It will show after moderation.");
+setTimeout(function() {
+   $("form .alert.alert-info").addClass('hide')
+}, 2000);

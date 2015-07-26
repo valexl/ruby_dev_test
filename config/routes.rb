@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [:index, :show]
+  resources :comments, only: [:create]
   
   root 'posts#index'
   

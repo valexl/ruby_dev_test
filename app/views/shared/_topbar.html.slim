@@ -13,12 +13,14 @@
 
   ul.nav.navbar-nav.navbar-right
     - if user_signed_in?
-      li role="presentation"
-        li
-          a href='#'
-            = current_user.email
-        li
-          = link_to 'Logoff', destroy_user_session_path, method: :delete, data: {confirm: 'Are you sure?'}
+      li
+        - if current_user.admin?
+            = link_to 'Admin', admin_root_path
+        - else
+            a href='#'
+              = current_user.email
+      li
+        = link_to 'Logoff', destroy_user_session_path, method: :delete, data: {confirm: 'Are you sure?'}
 
     - else
       li role="presentation"

@@ -11,3 +11,38 @@
           h4
             'Tag cloud
           = @post.tag_list
+    hr
+.row
+  .col-xs-12.col-sm-10.col-sm-offset-1.comments
+    h2
+      'Comments:
+
+    - @post.comments.each do |comment|
+      .row
+        .col-xs-12.comment
+          blockquote
+            p.lead
+              = comment.content
+            footer
+              = "#{comment.user.try(:email) || 'Visitor'}"
+    hr    
+    .alert.alert-danger.hide
+    = form_for Comment.new, remote: true do |f|
+      = f.hidden_field :post_id, value: @post.id
+      .alert.alert-info.hide
+
+      - unless user_signed_in?
+        .form-group
+          label 
+            'How much is two minus one?
+          = text_field_tag "comment[captcha]", nil, class: 'form-control'
+        p.help-block
+          'You don't authorized user. You have to confirm that you don't bot.
+
+      .form-group
+        label 
+          'Content
+        = f.text_area :content, class: 'form-control', rows: 5, placeholder: 'Your thoughts...', required: true
+
+      = f.submit "Add comment", class: 'btn btn-default'
+    hr
